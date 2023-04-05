@@ -1,0 +1,19 @@
+<h2>Posts</h2>
+
+<mat-card *ngFor="let data of dataPosts">
+    <mat-card-header>
+        <mat-card-title>
+            <span>{{data.title | titlecase}}</span>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <span>{{data.createdDate | date:"short"}}</span>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content >
+        <img mat-card-image *ngIf="data.imageUrl as imageUrl" [src]="imageUrl" [alt]="data.title">
+        <div class="post-content">{{data.content}}</div>
+    </mat-card-content>
+<mat-card-actions>
+    <app-comments [comments]="data.comments"></app-comments>
+</mat-card-actions>
+</mat-card>
